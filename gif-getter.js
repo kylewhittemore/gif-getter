@@ -3,7 +3,7 @@ $('#custom-search').on('click', function () {
         searchWord: $("#search-text").val().trim(),
         limit: $('#limit-return').val(),
         offset: 0,
-        rating: '',
+        rating: $("#rating-return").val(),
     };
 
     getGifs(searchObject);
@@ -13,9 +13,11 @@ function getGifs(queryObject) {
     let topic = queryObject.searchWord;
     let offset = queryObject.offset;
     let limit = parseInt(queryObject.limit);
+    let rating = 'r'
+    console.log(rating);
 
     let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        topic + "&limit=" + limit + "&offset=" + offset + "&api_key=G56yi3BK55QO0wjAO1tKVY2Vy4xkDTZH";
+        topic + "&limit=" + limit + "&offset=" + offset + "&rating=" + rating + "&api_key=G56yi3BK55QO0wjAO1tKVY2Vy4xkDTZH";
 
     offset = offset + 10;
     queryObject.offset = offset;
