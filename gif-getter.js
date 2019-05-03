@@ -12,6 +12,7 @@ $('#custom-search').on('click', function (event) {
     let keepSearch = $('#keep-search').is(":checked");
 
     if (keepSearch) {
+        $('#dropdown-favorites').attr('disabled', false);
         let topic = [searchObject.searchWord, searchObject.limit];
         console.log(topic);
         topicsArray.push(topic);
@@ -21,6 +22,8 @@ $('#custom-search').on('click', function (event) {
     console.log(keepSearch);
     console.log(searchObject);
     getGifs(searchObject);
+    $('#search-form-button').trigger('click')
+
 });
 
 function renderButtons() {
@@ -34,7 +37,7 @@ function renderButtons() {
         button.text(topicsArray[i][0]);
         $("#button-container").append(button);
     }
-    $("button").on("click", function () {
+    $(".dropdown-item").on("click", function () {
         let offset = parseInt($(this).attr("data-offset"));
         let limit = parseInt($(this).attr("data-limit"));
         console.log("offset: " + offset);
@@ -51,8 +54,8 @@ function renderButtons() {
     });
 };
 
-
 function getGifs(queryObject) {
+
     let topic = queryObject.searchWord;
     let offset = queryObject.offset;
     let limit = parseInt(queryObject.limit);
@@ -80,4 +83,5 @@ function getGifs(queryObject) {
     });
 };
 
+$('#dropdown-favorites').attr('disabled', true);
 renderButtons();
