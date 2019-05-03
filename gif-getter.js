@@ -1,5 +1,6 @@
 
 const topicsArray = [];
+let lastSearchObject;
 
 $('#custom-search').on('click', function (event) {
     event.preventDefault();
@@ -9,22 +10,19 @@ $('#custom-search').on('click', function (event) {
         offset: 0,
         rating: $("#rating-return").val(),
     };
-    let keepSearch = $('#keep-search').is(":checked");
+    lastSearchObject = searchObject;
+    lastSearchObject.offset = parseInt(lastSearchObject.offset) + parseInt(lastSearchObject.limit);
+    console.log(lastSearchObject);
 
-    if (keepSearch) {
-        $('#dropdown-favorites').attr('disabled', false);
-        let topic = [searchObject.searchWord, searchObject.limit];
-        console.log(topic);
-        topicsArray.push(topic);
-        renderButtons();
-    }
     $("form").trigger("reset");
-    console.log(keepSearch);
+
     console.log(searchObject);
     getGifs(searchObject);
     $('#search-form-button').trigger('click')
 
 });
+
+
 
 function renderButtons() {
     $("#button-container").empty();
@@ -55,7 +53,6 @@ function renderButtons() {
 };
 
 function getGifs(queryObject) {
-
     let topic = queryObject.searchWord;
     let offset = queryObject.offset;
     let limit = parseInt(queryObject.limit);
@@ -64,24 +61,94 @@ function getGifs(queryObject) {
     let queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         topic + "&limit=" + limit + "&offset=" + offset + "&rating=" + rating + "&api_key=G56yi3BK55QO0wjAO1tKVY2Vy4xkDTZH";
 
+    lastSearchObject = queryObject;
+    lastSearchObject.offset = parseInt(lastSearchObject.offset) + parseInt(lastSearchObject.limit);
+    console.log(lastSearchObject);
+
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
 
         let results = response.data;
-        // Looping through each result item
+
         for (i = 0; i < results.length; i++) {
             let gifDiv = $(`<div class="m-2">`);
-            let p = $("<p>").text("Rating: " + results[i].rating);
             let gifImage = $("<img>");
             gifImage.attr("src", results[i].images.fixed_height.url);
             gifDiv.append(gifImage);
-            gifDiv.append(p);
             $("#gifs-appear-here").prepend(gifDiv);
         }
     });
 };
 
+function getTrending() {
+
+    let queryURL = "https://api.giphy.com/v1/gifs/trending?q=&limit=5&api_key=G56yi3BK55QO0wjAO1tKVY2Vy4xkDTZH";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        let results = response.data;
+        
+        for (i = 0; i < results.length; i++) {
+            let gifDiv = $(`<div class="m-2">`);
+            let gifImage = $("<img>");
+            gifImage.attr("src", results[i].images.fixed_height.url);
+            gifDiv.append(gifImage);
+            $("#gifs-appear-here").prepend(gifDiv);
+        }
+    });
+}
+function getRandom() {
+    for (i = 0; i < 5; i++) {
+        let queryURL = "https://api.giphy.com/v1/gifs/random?q=&api_key=G56yi3BK55QO0wjAO1tKVY2Vy4xkDTZH";
+        // lastQueryUrl = queryURL;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response)
+            let results = response.data;
+
+            let gifDiv = $(`<div class="m-2">`);
+            let gifImage = $("<img>");
+            gifImage.attr("src", results.images.fixed_height.url);
+            gifDiv.append(gifImage);
+            $("#gifs-appear-here").prepend(gifDiv);
+            // }
+        });
+    }
+}
+
+$('#random').on('click', function () {
+    getRandom();
+});
+$('#clear').on('click', function () {
+    $("#gifs-appear-here").empty();
+});
+$('#trending').on('click', function () {
+    getRandom();
+});
+$('#more').on('click', function () {
+    getGifs(lastSearchObject);
+})
+
+$('#add-to-favs').on('click', function () {
+    $('#dropdown-favorites').attr('disabled', false);
+    let topic = [lastSearchObject.searchWord, lastSearchObject.limit];
+    console.log(topic);
+    topicsArray.push(topic);
+    renderButtons();
+})
+
 $('#dropdown-favorites').attr('disabled', true);
 renderButtons();
+
+getRandom();
+
+$('#navbarNavDropdown').on('show.bs.collapse', function () {
+    alert('booyah')
+})

@@ -47,9 +47,9 @@
                                 <div class="form-group">
                                     <label for="limit-return">Results Limit: </label>
                                     <select onclick="event.stopPropagation();" class="form-control" id="limit-return">
+                                        <option>5</option>
                                         <option>10</option>
                                         <option>15</option>
-                                        <option>20</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -61,12 +61,6 @@
                                         <option>r</option>
                                     </select>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="keep-search">
-                                    <label class="form-check-label" for="keep-search">
-                                        Save this search topic.
-                                    </label>
-                                </div>
                                 <div class="form-group">
                                     <input id="custom-search" type="submit"
                                         class="btn white-text bc-dk-blue btn-block  m-1" value="Search">
@@ -74,6 +68,21 @@
                             </form>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item">
+                        <button id="more" class="btn white-text" type="button">More!</button>
+                </li>
+                <li class="nav-item">
+                        <button id="clear" class="btn white-text" type="button">Clear</button>
+                </li>
+                <li class="nav-item">
+                        <button id="trending" class="btn white-text" type="button">Trending</button>
+                </li>
+                <li class="nav-item">
+                        <button id="random" class="btn white-text" type="button">Random</button>
+                </li>
+                <li class="nav-item">
+                        <button id="add-to-favs" class="btn white-text" type="button">Add Search to Favorites</button>
                 </li>
             </ul>
         </div>

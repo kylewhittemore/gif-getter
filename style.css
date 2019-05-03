@@ -31,3 +31,6 @@
     background-color: #A7BADB;
     color: whitesmoke;
 }
+@media (min-width: 992px) { 
+    .btn-group
+ }
