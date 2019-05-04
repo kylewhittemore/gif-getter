@@ -1,4 +1,4 @@
-# gif-getter-hard-mode
+# gif-getter
 
 ##Big Picture
 * I started by creating the basic homework.  I thought that the format would look nice
