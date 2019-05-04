@@ -17,3 +17,7 @@
 * to filter the search, and the add to favorites button will add the previous search to the 
 * favorites.  Clear clears the gifs.  More...! will get the next ten gifs from giphy for a given 
 * search.
+
+##The other html/js documents
+* I thought that it would be interesting to use firebase for this app to 
+* store the favorites but have not finished.
