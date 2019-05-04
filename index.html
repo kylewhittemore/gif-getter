@@ -12,52 +12,88 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="container form-style mt-2 col-3">
-                <form id="query-form">
-                    <div class="form-group">
-                        <label for="search-text">Keyword: </label>
-                        <input type="text" class="form-control" id="search-text"
-                            placeholder="type a keyword to search for...">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Gif Getter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <div class="btn-group">
+                        <button id="dropdown-favorites" class="btn white-text dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Favorites
+                        </button>
+                        <div id="button-container" class="dropdown-menu" aria-labelledby="dropdown-favorites">
+
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="limit-return">Results Limit: </label>
-                        <select class="form-control" id="limit-return">
-                            <option>10</option>
-                            <option>15</option>
-                            <option>20</option>
-                        </select>
+                </li>
+                <li class="nav-item">
+                    <div class="btn-group">
+                        <button id="search-form-button" class="btn white-text dropdown-toggle" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            New Search
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-left p-4">
+                            <form class="" style="width: 220px">
+                                <div class="form-group">
+                                    <label for="search-text">Keyword: </label>
+                                    <input type="text" class="form-control" id="search-text"
+                                        placeholder="search for...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="limit-return">Results Limit: </label>
+                                    <select class="form-control" id="limit-return">
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>15</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating-return">Rating Limit:</label>
+                                    <select class="form-control" id="rating-return">
+                                        <option>g</option>
+                                        <option>pg</option>
+                                        <option>pg-13</option>
+                                        <option>r</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input id="custom-search" type="submit"
+                                        class="btn white-text bc-dk-blue btn-block  m-1" value="Search">
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="rating-return">Rating Limit:</label>
-                        <select class="form-control" id="rating-return">
-                            <option>g</option>
-                            <option>pg</option>
-                            <option>pg-13</option>
-                            <option>r</option>
-                        </select>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="keep-search">
-                        <label class="form-check-label" for="keep-search">
-                          Save this search topic.
-                        </label>
-                      </div>
-                    <div class="form-group">
-                        <input id="custom-search" class="btn white-text bc-dk-blue btn-block  m-1" value="Search">
-                    </div>
-                    <div class="row">
-                        <div id="button-container"></div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-9 mt-2">
-                <div class="row">
-                    <div id="gifs-appear-here" class="container d-flex flex-wrap m-2 p-2 justify-content-around col-10">
-                    </div>
-                </div>
-            </div>
+                </li>
+                <li class="nav-item">
+                    <button id="more" class="btn white-text" type="button">More!</button>
+                </li>
+                <li class="nav-item">
+                    <button id="clear" class="btn white-text" type="button">Clear</button>
+                </li>
+                <li class="nav-item">
+                    <button id="trending" class="btn white-text" type="button">Trending</button>
+                </li>
+                <li class="nav-item">
+                    <button id="random" class="btn white-text" type="button">Random</button>
+                </li>
+                <li class="nav-item">
+                    <button id="add-to-favs" class="btn white-text" type="button">Add Search to Favorites</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row d-flex justify-content-center">
+        <div class="container d-flex  m-2 p-2 justify-content-center col-10">
+            <div id="gif-display-text" class="container d-flex m-2 p-2 justify-content-center col-10"></div>
+        </div>
+        <div class="container d-flex  m-2 p-2 justify-content-center col-10">
+            <div id="gifs-appear-here" class="container d-flex flex-wrap m-2 p-2 justify-content-around col-10"></div>
         </div>
     </div>
 

@@ -1,23 +1,3 @@
-/* Color Theme Swatches in Hex */
-.Northern-Forest-1-hex { color: #4476BF; }
-.Northern-Forest-2-hex { color: #5E85C0; }
-.Northern-Forest-3-hex { color: #A7BADB; }
-.Northern-Forest-4-hex { color: #313F28; }
-.Northern-Forest-5-hex { color: #61752A; }
-
-/* Color Theme Swatches in RGBA */
-.Northern-Forest-1-rgba { color: rgba(68, 118, 191, 1); }
-.Northern-Forest-2-rgba { color: rgba(94, 133, 192, 1); }
-.Northern-Forest-3-rgba { color: rgba(167, 186, 219, 1); }
-.Northern-Forest-4-rgba { color: rgba(49, 63, 40, 1); }
-.Northern-Forest-5-rgba { color: rgba(97, 117, 42, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Northern-Forest-1-hsla { color: hsla(215, 49, 50, 1); }
-.Northern-Forest-2-hsla { color: hsla(216, 43, 56, 1); }
-.Northern-Forest-3-hsla { color: hsla(218, 41, 75, 1); }
-.Northern-Forest-4-hsla { color: hsla(96, 22, 20, 1); }
-.Northern-Forest-5-hsla { color: hsla(76, 47, 31, 1); }
 
 .white-text {
     color: whitesmoke;
@@ -26,11 +6,3 @@
 .bc-dk-blue {
     background-color: #4476BF;
 }
-
-.form-style {
-    background-color: #A7BADB;
-    color: whitesmoke;
-}
-@media (min-width: 992px) { 
-    
- }
